@@ -1,0 +1,71 @@
+# BEGIN WPMastertoolkit: Hide PHP Versions
+<IfModule mod_headers.c>
+	Header unset X-Powered-By
+</IfModule>
+# END WPMastertoolkit: Hide PHP Versions
+
+# BEGIN WPMastertoolkit: Disallow Malicious File Access in Upload
+<IfModule mod_rewrite.c>
+	RewriteEngine On
+	RewriteBase /
+	RewriteRule ^wp-content/uploads/.*\.(\.9|73i87a|386|aaa|abc|aepl|aru|atm|aut|bat|bhx|bin|bkd|blf|bll|bmw|boo|bps|bqf|breaking_bad|btc|buk|bup|bxz|ccc|ce0|ceo|cfxxe|chm|cih|cla|cmd|com|coverton|cpl|crinf|crjoker|crypt|crypted|cryptolocker|cryptowall|ctbl|cxq|cyw|czvxce|darkness|dbd|delf|dev|dlb|dli|dll|dllx|dom|drv|dx|dxz|dyv|dyz|ecc|enciphered|encrypt|encrypted|enigma|exe1|exe_renamed|exx|ezt|ezz|fag|fjl|fnr|fuj|fun|good|gzquar|ha3|hlp|hlw|hsq|hts|iva|iws|jar|kcd|kernel_complete|kernel_pid|kernel_time|keybtc@inbox_com|kimcilware|kkk|kraken|lechiffre|let|lik|lkh|lnk|locked|locky|lok|lol\!|lpaq5|magic|mfu|micro|mjg|mjz|nls|oar|ocx|osa|ozd|p5tkjw|pcx|pdcr|pgm|php|php2|php3|pid|pif|plc|poar2w|pr|pzdc|qit|qrn|r5a|rdm|rhk|rna|rokku|rrk|rsc_tmp|s7p|scr|scr|shs|ska|smm|smtmp|sop|spam|ssy|surprise|sys|tko|tps|tsa|tti|ttt|txs|upa|uzy|vb|vba|vbe|vbs|vbx|vexe|vxd|vzr|wlpginstall|wmf|ws|wsc|wsf|wsh|wss|xdu|xir|xlm|xlv|xnt|xnxx|xtbl|xxx|xyz|zix|zvz|zzz)$ - [R=404,L,NC]
+</IfModule>
+# END WPMastertoolkit: Disallow Malicious File Access in Upload
+
+# BEGIN WPMastertoolkit: Disallow Dir Listing
+options -Indexes
+# END WPMastertoolkit: Disallow Dir Listing
+
+# BEGIN LSCACHE
+## LITESPEED WP CACHE PLUGIN - Do not edit the contents of this block! ##
+<IfModule mod_rewrite.c>
+RewriteEngine on
+RewriteRule litespeed/debug/.*\.log$ - [F,L]
+RewriteRule \.litespeed_conf\.dat - [F,L]
+</IfModule>
+<IfModule LiteSpeed>
+CacheLookup on
+RewriteRule .* - [E=Cache-Control:no-autoflush]
+
+### marker ASYNC start ###
+RewriteCond %{REQUEST_URI} /wp-admin/admin-ajax\.php
+RewriteCond %{QUERY_STRING} action=async_litespeed
+RewriteRule .* - [E=noabort:1]
+### marker ASYNC end ###
+
+### marker MOBILE start ###
+RewriteCond %{HTTP_USER_AGENT} Mobile|Android|Silk/|Kindle|BlackBerry|Opera\ Mini|Opera\ Mobi [NC]
+RewriteRule .* - [E=Cache-Control:vary=%{ENV:LSCACHE_VARY_VALUE}+ismobile]
+### marker MOBILE end ###
+
+### marker DROPQS start ###
+CacheKeyModify -qs:fbclid
+CacheKeyModify -qs:gclid
+CacheKeyModify -qs:utm*
+CacheKeyModify -qs:_ga
+### marker DROPQS end ###
+
+</IfModule>
+## LITESPEED WP CACHE PLUGIN - Do not edit the contents of this block! ##
+# END LSCACHE
+# BEGIN NON_LSCACHE
+## LITESPEED WP CACHE PLUGIN - Do not edit the contents of this block! ##
+## LITESPEED WP CACHE PLUGIN - Do not edit the contents of this block! ##
+# END NON_LSCACHE
+# This file was updated by Duplicator Pro on 2024-12-19 17:06:57.
+# See the original_files_ folder for the original source_site_htaccess file.
+# BEGIN WordPress
+# Les directives (lignes) entre « BEGIN WordPress » et « END WordPress » sont générées
+# dynamiquement, et doivent être modifiées uniquement via les filtres WordPress.
+# Toute modification des directives situées entre ces marqueurs sera surchargée.
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+RewriteBase /
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+</IfModule>
+
+# END WordPress
