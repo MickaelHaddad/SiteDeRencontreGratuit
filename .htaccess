@@ -1,3 +1,10 @@
+<If "%{HTTP_HOST} == 'sitesderencontregratuit.com' || %{HTTP_HOST} == 'sitesderencontregratuit.com'">
+    AuthType Basic
+    AuthName "Accès restreint"
+    AuthUserFile /lamp0/web/vhosts/sitesderencontregratuit.com/htdocs/.htpasswd
+    Require valid-user
+</If>
+
 # BEGIN WPMastertoolkit: Hide PHP Versions
 <IfModule mod_headers.c>
 	Header unset X-Powered-By
