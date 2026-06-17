@@ -34,10 +34,10 @@ define( 'DISALLOW_FILE_EDIT', true );
 define( 'DB_NAME', "gefo7278_srg125" );
 
 /** Database username */
-define( 'DB_USER', "gefo7278_srg125" );
+define( 'DB_USER', "root" );
 
 /** Database password */
-define( 'DB_PASSWORD', "ZviD)zf=k89Ug=GBAa" );
+define( 'DB_PASSWORD', "" );
 
 /** Database hostname */
 define( 'DB_HOST', "localhost" );
